@@ -1,0 +1,60 @@
+diff --git a/src/canvas/canvas.tsx b/src/canvas/canvas.tsx
+index a2edbbbeddb97c17ca67541a3046f98423d52781..f7f81eca5fff57af8c279259b3e4878ee4b2d2bf 100644
+--- a/src/canvas/canvas.tsx
++++ b/src/canvas/canvas.tsx
+@@ -5,7 +5,7 @@ import {
+   GestureDetector,
+   PanGesture,
+ } from 'react-native-gesture-handler';
+-import Animated, { useSharedValue } from 'react-native-reanimated';
++import { useSharedValue } from 'react-native-reanimated';
+ 
+ import {
+   TouchHandlerContext,
+@@ -19,8 +19,6 @@ type TouchableCanvasProps = CanvasProps & {
+   timeoutBeforeCollectingRefs?: number; // default 100
+ };
+ 
+-const AnimatedSkiaCanvas = Animated.createAnimatedComponent(SkiaCanvas);
+-
+ const Canvas: React.FC<TouchableCanvasProps> = ({
+   children,
+   panGesture = Gesture.Pan(),
+@@ -54,6 +52,7 @@ const Canvas: React.FC<TouchableCanvasProps> = ({
+ 
+   const mainGesture = panGesture
+     .onBegin((event) => {
++      "worklet";
+       const keys = Object.keys(loadedRefs);
+       for (let i = 0; i < keys.length; i++) {
+         const key = keys[i] as string;
+@@ -66,6 +65,7 @@ const Canvas: React.FC<TouchableCanvasProps> = ({
+       }
+     })
+     .onUpdate((event) => {
++      "worklet";
+       const activatedKey = activeKey.value.find((key) =>
+         key.includes(event.handlerTag.toString())
+       );
+@@ -83,6 +83,7 @@ const Canvas: React.FC<TouchableCanvasProps> = ({
+       return touchableItem?.onActive?.(event);
+     })
+     .onFinalize((event) => {
++      "worklet";
+       const activatedKey = activeKey.value.find((key) =>
+         key.includes(event.handlerTag.toString())
+       );
+@@ -108,11 +109,11 @@ const Canvas: React.FC<TouchableCanvasProps> = ({
+ 
+   return (
+     <GestureDetector gesture={mainGesture}>
+-      <AnimatedSkiaCanvas {...props}>
++      <SkiaCanvas {...props}>
+         <TouchHandlerContext.Provider value={touchableRefs}>
+           {children}
+         </TouchHandlerContext.Provider>
+-      </AnimatedSkiaCanvas>
++      </SkiaCanvas>
+     </GestureDetector>
+   );
+ };

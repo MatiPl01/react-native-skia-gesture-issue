@@ -8030,13 +8030,23 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-native-skia-gesture@npm:^0.3.5":
+"react-native-skia-gesture@npm:0.3.5":
   version: 0.3.5
   resolution: "react-native-skia-gesture@npm:0.3.5"
   peerDependencies:
     react: ">= 18.0.0"
     react-native: "*"
   checksum: eadbcc438f7e65af81652fd3fce35beca47e9976b710c9aa020fa22280af7f4dfe77f6913170b52602f61ec7e225adf1a492679552ded7357b206a1128e5688c
+  languageName: node
+  linkType: hard
+
+"react-native-skia-gesture@patch:react-native-skia-gesture@npm%3A0.3.5#./.yarn/patches/react-native-skia-gesture-npm-0.3.5-16359a72c1.patch::locator=SkiaGesture%40workspace%3A.":
+  version: 0.3.5
+  resolution: "react-native-skia-gesture@patch:react-native-skia-gesture@npm%3A0.3.5#./.yarn/patches/react-native-skia-gesture-npm-0.3.5-16359a72c1.patch::version=0.3.5&hash=eb2ce0&locator=SkiaGesture%40workspace%3A."
+  peerDependencies:
+    react: ">= 18.0.0"
+    react-native: "*"
+  checksum: 2c5f70671ae170708a14996da5c09b94261a67acee63cccd0a94aba855588ce19b0469eea8b957eb647d963c624fbafe4bccd21cc8549ba43686126f312a78db
   languageName: node
   linkType: hard
 
